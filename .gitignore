@@ -1,0 +1,8 @@
+devices/dht11_device.py
+database.db
+env
+.DS_Store
+.gitignore
+models/__pycache__/__init__.cpython-39.pyc
+__pycache__/api.cpython-39.pyc
+models/__pycache__/Reading.cpython-39.pyc
