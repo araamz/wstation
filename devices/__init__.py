@@ -1,0 +1,1 @@
+# Based upon https://www.geeksforgeeks.org/singleton-pattern-in-python-a-complete-guide/ 

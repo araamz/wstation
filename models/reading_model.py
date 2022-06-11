@@ -1,7 +1,5 @@
 from api import db
 
-print("models - Reading Model")
-
 class reading_model(db.Model):
 
     __tablename__ = 'readings'
