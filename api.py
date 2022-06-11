@@ -27,9 +27,9 @@ device2 = dht11_device()
 print(device2.testing_val)
 print(device1 is device2)
 
-
 from services.recorder_service import RecorderService
-import threading
-service = RecorderService()
-service_thread = threading.Thread(target=service.start_service)
+print(__name__)
+
+service_class = RecorderService()
+service_thread = threading.Thread(target=service_class.start_service)
 service_thread.start()

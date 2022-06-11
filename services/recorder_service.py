@@ -1,29 +1,55 @@
+from concurrent.futures import thread
+import threading
 from time import sleep
+
+from sqlalchemy import true
 
 from services import Service
 
-class RecorderService(Service):
+class RecorderService:
 
-    def __new__(cls):
-        if not hasattr(cls, 'instance'):
-            print(__name__ + " SEEN AND ACCESSED")
-            cls.instance = super(RecorderService, cls).__new__(cls)
-        return cls.instance
+    _instane = None
+    _lock = threading.Lock()
+    _active_lock = threading.Lock()
 
-    active = False
+    def __new__(cls, *args, **kargs):
+        if not cls._instane:
+            with cls._lock:
+                if not cls._instane:
+                    print("CREATED NEW THREAD - " + __name__)
+                    cls._instane = super(RecorderService, cls).__new__(cls)
+        print("DID NOT CREATE NEW THREAD - " + __name__)
+        return cls._instane
+
+    active = True
 
     def start_service(self):
-        super().start_service()
+        #super().start_service()
 
-        self.active = True
-
-        while (self.active):
-
+        while (true):
+            self._active_lock.acquire()
+            if (self.active == False):
+                break
+            self._active_lock.release()
             sleep(2)
-            print("System Run")
+            print("System Run - " + str(threading.get_ident()))
 
+            
+
+        print("Service Stopped")
         return
 
     def stop_service(self):
 
+        print("Attempt Shutdown")
+        if (self._active_lock.locked()):
+            print("Locked Service")
+            return False
+
+        self._active_lock.acquire()
         self.active = False
+        self._active_lock.release()
+        return True
+
+
+
