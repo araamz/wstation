@@ -1,6 +1,5 @@
 # Used https://python.plainenglish.io/flask-crud-application-using-mvc-architecture-3b073271274f as a basis.
 
-from concurrent.futures import thread
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import threading
@@ -31,5 +30,12 @@ from services.recorder_service import RecorderService
 print(__name__)
 
 service_class = RecorderService()
-service_thread = threading.Thread(target=service_class.start_service)
-service_thread.start()
+service_class = RecorderService()
+service_class = RecorderService()
+service_class = RecorderService()
+service_class = RecorderService()
+service_class = RecorderService()
+
+
+
+service_class.start()

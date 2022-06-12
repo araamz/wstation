@@ -12,7 +12,6 @@ def send_live_data():
     
     testing_device = dht11_device()
     print("EXTERNAL DEVICE - " + str(testing_device.testing_val))
-    service  = RecorderService()
-    service.stop_service()
+
 
     return jsonify("testing")
