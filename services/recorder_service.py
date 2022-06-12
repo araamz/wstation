@@ -1,10 +1,5 @@
-from concurrent.futures import thread
-import threading
-from time import sleep
-
-from sqlalchemy import true
-
 from services import Service
+from time import sleep
 
 class RecorderService(Service):
 
