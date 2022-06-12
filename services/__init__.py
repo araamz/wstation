@@ -1,15 +1,15 @@
 import threading
 class Service(threading.Thread, object):
 
-    instane = None
+    instance = None
     lock = threading.Lock()
 
     def __new__(cls, *args, **kargs):
-        if not cls.instane:
+        if not cls.instance:
             with cls.lock:
-                if not cls.instane:
-                    cls.instane = super(Service, cls).__new__(cls)
-        return cls.instane
+                if not cls.instance:
+                    cls.instance = super(Service, cls).__new__(cls)
+        return cls.instance
 
     def run(self):
         pass

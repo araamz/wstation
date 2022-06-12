@@ -1,11 +1,16 @@
 
 from flask import jsonify
+from devices.dht11_device import dht11Device
 
 def send_live_data():
 
+    weather_sensor = dht11Device().retrieve_data()
+    temperature_value = weather_sensor[0]
+    humidity_value = weather_sensor[1]
 
-    # access device 
-    # get data
-    # transform data to be serialized
+    serialized_data = {
+        'humidity': humidity_value,
+        'temperature': temperature_value,
+    }
 
-    return jsonify("testing")
+    return jsonify(serialized_data)
