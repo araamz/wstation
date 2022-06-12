@@ -1,5 +1,6 @@
 
 from flask import jsonify
+from api import db
 from devices.dht11_device import dht11Device
 
 def show_live_data():
@@ -14,3 +15,4 @@ def show_live_data():
     }
 
     return jsonify(serialized_data)
+
