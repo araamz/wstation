@@ -1,10 +1,10 @@
 from flask import jsonify
-from models.reading_model import reading_model
+from models.reading_model import ReadingModel
 from api import db
 
 def show_all():
 
-    records = db.session.query(reading_model).all()
+    records = db.session.query(ReadingModel).all()
     readings = []
     
     for record in records:
@@ -14,7 +14,7 @@ def show_all():
 
 def show(reading_id):
 
-    record = db.session.query(reading_model).filter(reading_model.id == reading_id).first()
+    record = db.session.query(ReadingModel).filter(ReadingModel.id == reading_id).first()
     reading = record.serialize
 
     return jsonify(reading)

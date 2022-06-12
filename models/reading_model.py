@@ -1,6 +1,6 @@
 from api import db
 
-class reading_model(db.Model):
+class ReadingModel(db.Model):
 
     __tablename__ = 'readings'
 
