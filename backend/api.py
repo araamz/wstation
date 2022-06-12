@@ -15,6 +15,3 @@ api.register_blueprint(device_blueprint, url_prefix='/device')
 from services.recorder_service import RecorderService
 services = [RecorderService()]
 services[0].start()
-
-if __name__ == "__main__":
-    api.run(host="0.0.0.0")
