@@ -1,9 +1,13 @@
-
 from flask import jsonify
 from api import db
 from devices.dht11_device import dht11Device
 
-def show_live_data():
+def check_alive():
+
+    alive_message = { "alive": True }
+    return jsonify(alive_message)
+
+def show_reading():
 
     weather_sensor = dht11Device().retrieve_data()
     temperature_value = weather_sensor[0]
