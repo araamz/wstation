@@ -1,21 +1,16 @@
-import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import ServerState, { ServerContext } from './contexts/ServerState';
-import useDaemon from './hooks/useDaemon';
-
+import { ServerProvider } from './contexts/ServerContext';
 
 function App() {
 
-  const server = useContext(ServerContext)
-  
-  useDaemon(server)
 
   return (
-    <>
-      <ServerState>
-        <Outlet />
-      </ServerState>
-    </>
+    <ServerProvider>
+      <p>
+        Testing
+      </p>
+      <Outlet />
+    </ServerProvider>
   );
 }
 

@@ -1,11 +1,11 @@
-from flask import jsonify
+from http import HTTPStatus
+from flask import Response, jsonify
 from api import db
 from devices.dht11_device import dht11Device
 
 def check_alive():
 
-    alive_message = { "alive": True }
-    return jsonify(alive_message)
+    return jsonify(), 200
 
 def show_reading():
 

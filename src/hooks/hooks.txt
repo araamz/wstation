@@ -1,0 +1,8 @@
+=== BEGIN CUSTOM HOOK CONVENTION USED ===
+
+* Start use with "use"
+* Uses camel case for the hook names
+* Hook are within their own file
+* Hooks use arrow functions and then exported at the bottom of the file
+
+=== END CUSTOM HOOK CONVENTION USED ===
