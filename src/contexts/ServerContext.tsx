@@ -1,11 +1,11 @@
 import { createContext, useContext, useReducer } from 'react'
+import { Outlet } from 'react-router-dom'
 
-type Server = {domain: string, port: number, address?: string}
+type Server = {domain: string, port: number, address: string}
 
 type Action = {type: 'connected', payload: Server} | {type: 'disconnected'} | {type: 'failure', payload: any}
 type Dispatch = (action: Action) => void
 type State = {server: Server, alive: boolean, error: null | any}
-type ServerProviderProps = {children: React.ReactNode}
 
 const ServerContext = createContext<undefined | {state: State, dispatch: Dispatch}>(undefined)
 
@@ -17,7 +17,6 @@ const serverReducer = (state: State, action: Action):State => {
             const address = `${domain}:${port}`
 
             const new_state:State = {server: {domain: domain, port: port, address: address}, alive: true, error: null}
-            console.log(new_state)
 
             return new_state
         }
@@ -49,12 +48,12 @@ const serverReducer = (state: State, action: Action):State => {
     }
 }
 
-const ServerProvider = ({children}:ServerProviderProps) => {
+const ServerProvider = () => {
     const [state, dispatch] = useReducer(serverReducer, {server: {domain: "", port: 0, address: ""}, alive: false, error: null})
 
     return (
         <ServerContext.Provider value={{state, dispatch}}>
-            {children}
+            <Outlet />
         </ServerContext.Provider>
     )
 }

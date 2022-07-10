@@ -5,9 +5,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import ConnectPage from './pages/ConnectPage';
-//import LivePage from './pages/LivePage/LivePage';
-//import ReadingsPage from './pages/ReadingsPage/ReadingsPage';
+import { ServerProvider } from './contexts/ServerContext';
+import LivePage from './pages/LivePage/LivePage';
+import ReadingsPage from './pages/ReadingsPage/ReadingsPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,8 +16,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<ConnectPage />} />
+        <Route element={<ServerProvider />}>
+          <Route path="/" element={<App />}>
+            <Route index element={<LivePage />} />
+            <Route path="readings" element={<ReadingsPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useServerContext } from "../../contexts/ServerContext";
 
 const useConnectionDaemon = () => {

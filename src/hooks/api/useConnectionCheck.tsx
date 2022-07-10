@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useState } from "react"
 import { useServerContext } from "../../contexts/ServerContext"
 const useConnectionCheck = (domain: string, port: number) => {
 
@@ -20,7 +20,7 @@ const useConnectionCheck = (domain: string, port: number) => {
 
           dispatch({
             type:'connected', 
-            payload: {domain: domain, port: port}
+            payload: {domain: domain, port: port, address: ""}
           })
 
         }).catch((error) => {
