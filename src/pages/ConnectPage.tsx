@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import { useServerContext } from "../contexts/ServerContext"
 import useConnectionCheck from "../hooks/api/useConnectionCheck"
 import useConnectionDaemon from "../hooks/api/useConnectionDaemon"
